@@ -21,7 +21,7 @@ Este comando executa o container de setup (`besu-setup`), que irá gerar as chav
 
 ### Passo 2: Iniciar os Nós da Blockchain
 
-Com a configuração pronta, este comando inicia os 3 nós da rede Besu em modo detached (background).
+Com a configuração pronta, este comando inicia os 3 nós da rede Besu em modo background.
 
 ```bash
   docker compose --profile nodes up -d
