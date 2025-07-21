@@ -25,9 +25,6 @@ besu \
   --p2p-port=30303 \
   --miner-enabled \
   --miner-coinbase=0x627306090abaB3A6e1400e9345bC60c78a8BEf57 \
-  --metrics-enabled \
-  --metrics-host=0.0.0.0 \
-  --metrics-port=9545 \
   --logging=INFO \
   --min-gas-price=0 \
   --data-storage-format=BONSAI \
