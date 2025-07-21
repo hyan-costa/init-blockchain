@@ -38,11 +38,11 @@ O resultado final é uma rede em malha (mesh network), onde cada nó está conec
 
 ### Verifique a Conexão entre os Nós
 
-Execute o comando abaixo, substituindo <IP> pelo IP da sua máquina (ou 127.0.0.1 se estiver testando localmente).
+Execute o comando abaixo, substituindo <IP> pelo IP da sua máquina ou localhost.
 
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1}' [http://127.0.0.1:8545](http://127.0.0.1:8545)
+curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1}' http://<IP>:8545
 ```
 
 
@@ -60,7 +60,7 @@ Se a resposta for como a do json abaixo, os nós estão conectados.
 Use o método eth_blockNumber para verificar se a rede está produzindo blocos.
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' [http://127.0.0.1:8545](http://127.0.0.1:8545)
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' http://<IP>:8545
 ```
 
 Se o número de blocos (result) estiver aumentando a cada nova requisição, a rede está funcionando corretamente.
