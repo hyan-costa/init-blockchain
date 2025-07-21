@@ -1,0 +1,79 @@
+version: "3.8"
+
+services:
+  besu-setup:
+    image: hyperledger/besu:25.2.1
+    profiles: ["setup"]
+    container_name: besu-setup
+    entrypoint: ["/app/setup.sh"]
+    working_dir: /app
+    volumes:
+      - ./config:/app/config
+      - ./qbftConfig.json:/app/qbftConfig.json
+      - ./setup.sh:/app/setup.sh
+    networks:
+      - besu-net
+
+  besu-node1:
+    image: hyperledger/besu:25.2.1
+    profiles: ["nodes"]
+    container_name: besu-node1
+    networks:
+      besu-net:
+        ipv4_address: 172.25.0.10
+    environment:
+      - TZ=America/Sao_Paulo
+    entrypoint: ["/app/start-node1.sh"]
+    working_dir: /app
+    volumes:
+      - ./config:/app/config
+      - ./start-node1.sh:/app/start-node1.sh
+    ports:
+      - "8545:8545"
+      - "30303:30303"
+      - "9545:9545"
+
+  besu-node2:
+    image: hyperledger/besu:25.2.1
+    profiles: ["nodes"]
+    container_name: besu-node2
+    networks:
+      besu-net:
+        ipv4_address: 172.25.0.11
+    environment:
+      - TZ=America/Sao_Paulo
+    entrypoint: ["/app/start-node2.sh"]
+    working_dir: /app
+    volumes:
+      - ./config:/app/config
+      - ./start-node2.sh:/app/start-node2.sh
+    ports:
+      - "30304:30304"
+      - "9546:9545"
+
+  besu-node3:
+    image: hyperledger/besu:25.2.1
+    profiles: ["nodes"]
+    container_name: besu-node3
+    networks:
+      besu-net:
+        ipv4_address: 172.25.0.12
+    environment:
+      - TZ=America/Sao_Paulo
+    entrypoint: ["/app/start-node3.sh"]
+    working_dir: /app
+    volumes:
+      - ./config:/app/config
+      - ./start-node3.sh:/app/start-node3.sh
+    ports:
+      - "30305:30305"
+      - "9547:9545"
+
+
+networks:
+  besu-net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.25.0.0/16
