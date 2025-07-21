@@ -49,6 +49,9 @@ A tabela abaixo resume o mapeamento de portas da sua máquina (Host) para os con
 | | P2P (Discovery) | `30305` | `30305` |
 
 
+no arquivo `qbftConfig.json` foi adicionado um tempo de 30 segundos para geração de blocos.
+quando houver uma transação, a geração de blocos aumenta para 2 segundos.
+
 ## Testando a rede:
 
 ### Verifique a Conexão entre os Nós
